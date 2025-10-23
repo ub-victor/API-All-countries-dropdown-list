@@ -1,16 +1,23 @@
-// Get the <select> element
 const countrySelect = document.getElementById("countries");
 
-// Fetch the list of all countries from the REST Countries API
 fetch("https://restcountries.com/v3.1/all")
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
-    // Sort countries alphabetically by name
+    if (!Array.isArray(data)) {
+      throw new Error("Invalid response format");
+    }
+
+    // Sort alphabetically
     const sortedCountries = data.sort((a, b) => 
       a.name.common.localeCompare(b.name.common)
     );
 
-    // Create and append each country as an <option>
+    // Populate dropdown
     sortedCountries.forEach(country => {
       const option = document.createElement("option");
       option.value = country.name.common;
