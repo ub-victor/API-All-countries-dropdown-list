@@ -14,7 +14,7 @@ A small web component / example project that fetches a list of countries from a 
 
 ## Quick start
 1. Clone the repo:
-    git clone <repo-url>
+    git clone 
 2. Open the example:
     - Option A: Open `index.html` in a browser
     - Option B: Serve locally (recommended):
