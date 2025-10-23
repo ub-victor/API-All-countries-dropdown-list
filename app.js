@@ -1,27 +1,16 @@
 const countrySelect = document.getElementById("countries");
 
-fetch("https://restcountries.com/v3.1/all")
+fetch("https://restcountries.com/v2/all")
   .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   })
   .then(data => {
-    if (!Array.isArray(data)) {
-      throw new Error("Invalid response format");
-    }
-
-    // Sort alphabetically
-    const sortedCountries = data.sort((a, b) => 
-      a.name.common.localeCompare(b.name.common)
-    );
-
-    // Populate dropdown
-    sortedCountries.forEach(country => {
+    data.sort((a, b) => a.name.localeCompare(b.name));
+    data.forEach(country => {
       const option = document.createElement("option");
-      option.value = country.name.common;
-      option.textContent = country.name.common;
+      option.value = country.name;
+      option.textContent = country.name;
       countrySelect.appendChild(option);
     });
   })
