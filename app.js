@@ -1,23 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Get the <select> element
+const countrySelect = document.getElementById("countries");
 
-  const selectDrop = document.querySelector('#countries');
-  // const selectDrop = document.getElementById('countries');
+// Fetch the list of all countries from the REST Countries API
+fetch("https://restcountries.com/v3.1/all")
+  .then(response => response.json())
+  .then(data => {
+    // Sort countries alphabetically by name
+    const sortedCountries = data.sort((a, b) => 
+      a.name.common.localeCompare(b.name.common)
+    );
 
-
-  fetch('http://restcountries.eu/rest/v2/all').then(res => {
-    return res.json();
-  }).then(data => {
-    let output = "";
-    data.forEach(country => {
-      output += `
-      
-      <option value="${country.name}">${country.name}</option>`;
-    })
-
-    selectDrop.innerHTML = output;
-  }).catch(err => {
-    console.log(err);
+    // Create and append each country as an <option>
+    sortedCountries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country.name.common;
+      option.textContent = country.name.common;
+      countrySelect.appendChild(option);
+    });
   })
-
-
-});
+  .catch(error => {
+    console.error("Error fetching countries:", error);
+    const option = document.createElement("option");
+    option.textContent = "Failed to load countries";
+    countrySelect.appendChild(option);
+  });
