@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const selectDrop = document.querySelector('#countries');
-  // const selectDrop = document.getElementById('countries');
 
+  fetch('https://restcountries.com/v3.1/all?fields=name')
+    .then(res => res.json())
+    .then(data => {
+      // Sort by the common name
+      data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
-  fetch('https://restcountries.com/v3.1/all').then(res => {
-    return res.json();
-  }).then(data => {
-    console.log(data);
-    let output = "";
-    data.forEach(country => {
-      output += `
-      
-      <option value="${country.name}">${country.name}</option>`;
+      let output = '<option value="">Select your country</option>';
+      data.forEach(country => {
+        output += `<option value="${country.name.common}">${country.name.common}</option>`;
+      });
+
+      selectDrop.innerHTML = output;
     })
-
-    selectDrop.innerHTML = output;
-  }).catch(err => {
-    console.log(err);
-  })
-
-
+    .catch(err => {
+      console.error('Error fetching countries:', err);
+    });
 });
