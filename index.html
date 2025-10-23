@@ -1,60 +1,52 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API-All-countries-dropdown-list</title>
-    <script src="./country+stata+District-City-Data.js" ></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Countries</title>
+  <style>
+    body {
+      display: grid;
+    }
+
+    label {
+      display: block;
+    }
+
+    input {
+      display: block;
+      margin: 10px 0 10px 0;
+    }
+
+    h1 {
+      color: teal;
+    }
+
+    .container {
+      margin: auto;
+    }
+  </style>
+
 </head>
+
 <body>
-    <form name="myform" id="myForm">
-        <!--Country Dropdown-->
-        <div class="select-something">
-            Country:
-            <select name="country" id="countrySel" size="1">
-                <option value="">Please Select Country</option>
-            </select>
-        </div>
 
-        <!--state Dropdown-->
-        <div class="select-something">
-            State:
-            <select name="state" id="stateSel" size="1">
-                <option value="">Please Select State</option>
-            </select>
-        </div>
-        <!--District or city Dropdown-->
-        <div class="select-something">
-            District/City:
-            <select name="district" id="districtSel" size="1">
-                <option value="">Please Select District/City</option>
-            </select>
-        </div>
-        <input class="submit" type="submit">
-        
+  <div class="container">
+    <h1>All countries Dropdown List</h1>
+    <form action="">
+      <input type="text" name="username" placeholder="Username">
+      <input type="email" name="mail" placeholder="Email">
+      <input type="password" name="pass1" placeholder="Password">
+      <input type="password" name="pass2" placeholder="Confirm Password">
+
+      <label for="countries">Choose your Country:</label>
+      <select id="countries" name="countries"></select>
+      <input type="submit" value="Register">
     </form>
+  </div>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-size: 25px;
-            font-weight: bold;
-            background-color: #f8edf8;
-        }
-        .select-something {
-            margin: 50px;
-        }
-        .submit {
-            margin-left: 50px;
-            padding: 15px;
-            outline: none;
-            border: none;
-            border-radius: 10px;
-            letter-spacing: 2px;
-            background-color: #000000;
-            color: #ffffff;
-        }
-    </style>
+  <script src="app.js"></script>
 </body>
+
 </html>
