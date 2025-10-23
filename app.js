@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // const selectDrop = document.getElementById('countries');
 
 
-  fetch('http://restcountries.eu/rest/v2/all').then(res => {
+  fetch('https://restcountries.com/v3.1/all').then(res => {
     return res.json();
   }).then(data => {
     let output = "";
