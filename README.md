@@ -13,7 +13,7 @@ A small web component / example project that fetches a list of countries from a 
 - Public API: https://restcountries.com (v3)
 
 ## Quick start
-1. Clone the repo:
+1. Clone the repo: https://github.com/ub-victor/API-All-countries-dropdown-list.git
     git clone 
 2. Open the example:
     - Option A: Open `index.html` in a browser
